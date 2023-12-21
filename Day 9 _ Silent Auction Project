@@ -1,0 +1,32 @@
+from replit import clear
+from art import logo
+
+print(logo)
+print( "*** Welcome to Blind Auction ***\n")
+
+Auction_start = True
+directory_dict = {}
+
+while Auction_start:
+    
+    name = input("What is your name:\t")
+    Bid_amt = int(input("What is your bid:\t$"))
+    #directory = add_participant_info_to_register(participant_name = name, participant_bid_amt = Bid_amt)
+    directory_dict[name] = Bid_amt
+    more_participants = input("Type 'yes' if there are more participants or 'No' to anounce winner..\n").lower()
+    if more_participants == "yes":
+        clear()
+    else:
+        Auction_start = False
+        clear()
+
+winning_bid_value = 0
+winner_name = ""
+for key in directory_dict:
+    # list_of_Bids = []
+    # list_of_Bids.append(directory[key])
+    if directory_dict[key] > winning_bid_value:
+        winning_bid_value = directory_dict[key]
+        winner_name = key
+
+print(f"{winner_name} wins the silent auction with a bid of ${winning_bid_value}")
